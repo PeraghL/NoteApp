@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note App</title>
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/noteblook_icon.png" type="image/x-icon">
+</head>
+<body onload="init()"> 
+    <!-- Nav -->
+    <div class="navbar-container">
+        <div class="navbar-left">
+            <a href="">Notes</a>
+        </div>
+        <div class="navbar-right">
+            <a href="#" onclick="showAddNotes()">Add Note</a>
+            <span>|</span>
+            <a href="#" onclick="showTrashcan()">Recycle Bin</a>
+        </div>
+    </div>
+
+    <!-- Searchbar -->
+    <div class="searchbar-container">
+        <h2>Search for Notes</h2>
+        <input type="text" id="search" class="searchbar-input" placeholder="Search for your notes">
+        <div class="search-buttons">
+            <button onclick="searchNotes()">Search</button>
+            <button onclick="clearSearchNotes()">Clear</button>
+        </div>
+    </div>
+
+    <!-- Notes Container -->
+    <div class="notes-container">
+        <h2>Your Notes</h2>
+        <div class="note-box" id="notebox">
+            <!-- Hier Werden die Notes Gerendert --> 
+        </div>
+    </div>
+
+    <!-- Add Note Display -->
+    <div class="add-note-container dp-none" id="shownotecontainer">
+        <div class="add-note-box">
+            <h3>ADD Note</h3>
+            <input type="text" placeholder="Note Title" id="notetitle">
+            <textarea placeholder="Note Text" id="notemessage"></textarea>
+            <button onclick="addNote()">Add Note</button>
+        </div>
+    </div>
+
+    <!-- Edit Note -->
+    <div class="add-note-container dp-none" id="showeditnotecontainer">
+        <div class="add-note-box"  id="editnotebox">
+            <h3>Edit Note</h3>
+            <input type="text" placeholder="Note Title" id="editnotetitle">
+            <textarea placeholder="Note Text" id="editnotemessage"></textarea>
+            <button onclick="editNote()">Save</button>
+        </div>
+    </div>
+
+    <!-- Add Note and Trashcan -->
+     <div class="icons-container">
+        <div class="ico-trashcan" onclick="showTrashcan()">
+            <img src="img/ico_trash.svg" alt=" Trashcan Symbol">
+         </div>
+        <div class="ico-addnote" onclick="showAddNotes()">
+            <img src="img/ico_plus.svg" alt=" Plus Symbol">
+         </div>
+     </div>
+
+    <!-- Recycle Bin Popup -->
+    <div class="trashcan-container dp-none" id="showtrashcontainer">
+        <div class="trash-box">
+            <div class="trash-header">
+                <h3>Trashcan</h3>
+                <a href="#" onclick="closeTrashcan()">Close</a>
+            </div>
+            <div class="container-trash-box" id="trashbox">
+                <div class="render-trash-box" id="render-trashbox">
+                    <!-- Hier Werden Die Trashcan Cards gerendert -->
+                </div>
+            </div>
+        </div>
+        <!-- Trashcan Popup Rlly Delete? -->
+        <div class="rlly-delete-bg dp-none" id="rllytrashcan">
+            <div class="rlly-delete-container">
+                <h3>Do you really want to delete the file permanently?</h3>
+                <div class="rlly-delete-buttons">
+                    <button onclick="closeRllyTrashcan()">No</button>
+                    <button onclick="deleteBasketNote()" id="rllydelete">Yes</button>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="htmltemplates.js"></script>
+</body>
+</html>
